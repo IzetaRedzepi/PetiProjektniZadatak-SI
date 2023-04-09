@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+<div class="container mt-3"> 
+
+
+    <table class="table table-dark text-white">
+        <thead>
+            <th>Number</th>
+            <th>Name</th>
+            <th>ID</th>
+            <th>Section</th>
+            <th>Gender</th>
+            
+        </thead>
+        <tbody  id="tbody1">
+    
+        </tbody>
+    </table>
+
+</div>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyCm-mw58K6bKczwCz7aieW0YDq21Q43s5c",
+          authDomain: "daprob.firebaseapp.com",
+          databaseURL: "https://daprob-default-rtdb.firebaseio.com",
+          projectId: "daprob",
+          storageBucket: "daprob.appspot.com",
+          messagingSenderId: "137116106917",
+          appId: "1:137116106917:web:cc5d17ea59cc6f438a4d4c"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+     //Get all data
+    function SelectAllData(){
+    const db = getDatabase();
+    onValue(ref(db, 'student'), function(AllRecords){
+        AllRecords.forEach(function(CurrentRecord){
+            var Name=CurrentRecord.val().name;
+            var Number=CurrentRecord.val().RollNo;
+            var Gender=CurrentRecord.val().gender;
+            var Section=CurrentRecord.val().Section;
+            AddItemsToTable(Name, Number, Gender, Section);
+        });
+    });
+}
+
+    window.onload=SelectAllData;
+
+    //filling the table
+    var stdNo=0;
+    function AddItemsToTable(Name, Number, Gender, Section){
+        var tbody=document.getElementById('tbody1');
+        var trow=document.createElement('tr');
+        var td1=document.createElement('td');
+        var td2=document.createElement('td');
+        var td3=document.createElement('td');
+        var td4=document.createElement('td');
+        var td5=document.createElement('td');
+        td1.innerHTML=++stdNo;
+        td2.innerHTML=Name;
+        td3.innerHTML=Number;
+        td4.innerHTML=Gender;
+        td5.innerHTML=Section;
+        trow.appendChild(td1); 
+        trow.appendChild(td2); 
+        trow.appendChild(td3); 
+        trow.appendChild(td4); 
+        trow.appendChild(td5); 
+        tbody.appendChild(trow);
+    }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+{
+
+  "student": {
+    "student_10": {
+      "gender": "male",
+      "name": "John Smith",
+      "RollNo": "12345",
+      "Section": "A"
+    },
+    "student_11": {
+      "gender": "female",
+      "name": "Jane Doe",
+      "RollNo": "54321",
+      "Section": "B"
+    },
+    "student_12": {
+      "gender": "male",
+      "name": "Bob Johnson",
+      "RollNo": "67890",
+      "Section": "C"
+    },
+    "student_13": {
+      "gender": "female",
+      "name": "Samantha Lee",
+      "RollNo": "13579",
+      "Section": "A"
+    },
+    "student_14": {
+      "gender": "male",
+      "name": "Michael Johnson",
+      "RollNo": "24680",
+      "Section": "B"
+    },
+    "student_15": {
+      "gender": "female",
+      "name": "Emily Davis",
+      "RollNo": "97531",
+      "Section": "C"
+    }
+  }
+}
